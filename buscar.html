@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Buscar Personagens</title>
+    <link rel="stylesheet" href="./css/buscar.css">
+</head>
+
+<body>
+   <div>
+    <input type="text" placeholder="Busque o personagem" id="texto-importante">
+    <button onclick="procurarRickMorty()">Buscar</button>
+    // onclick ao clicar ele vai e pega a função abaixo
+    <div id="resultado"></div>
+</div>
+
+<script>
+    // função 
+    function procurarRickMorty() {
+        const nome = document.getElementById('texto-importante').value.toLowerCase(); 
+        // quando digitado o nome ele busca no api
+        const resultado = document.getElementById('resultado');
+        // conts nomes da variaveis,   document.getElementById pega o id que esta dentro do () 
+
+        //endereço do api do banco de dados para a busca
+        fetch("https://rickandmortyapi.com/api/character/?name=" + nome)
+            .then(function(resposta) {
+                return resposta.json();
+            })
+            
+            .then(function(dados) {
+                    (dados.results && dados.results.length > 0) 
+                    const personagem = dados.results[0];
+                    resultado.innerHTML = `
+                        <h3>${personagem.name}</h3>
+                        <img src="${personagem.image}" alt="${personagem.name}">
+                        <p>Status: ${personagem.status}</p>
+                        <p>Espécie: ${personagem.species}</p>
+                    `;
+            })}
+</script>
+
+
+</body>
+
+</html>
