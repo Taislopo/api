@@ -12,7 +12,7 @@
    <div>
     <input type="text" placeholder="Busque o personagem" id="texto-importante">
     <button onclick="procurarRickMorty()">Buscar</button>
-    // onclick ao clicar ele vai e pega a função abaixo
+  <!-- onclick ao clicar ele vai e pega a função abaixo -->
     <div id="resultado"></div>
 </div>
 
@@ -28,16 +28,18 @@
         fetch("https://rickandmortyapi.com/api/character/?name=" + nome)
             .then(function(resposta) {
                 return resposta.json();
+            //esta esperando a resposta do json o banco de dados
             })
             
+            //na hora da busca vai ser pego esses dados o nome e a img
             .then(function(dados) {
+                // then requisição para a api
                     (dados.results && dados.results.length > 0) 
                     const personagem = dados.results[0];
+                    // condição para ver se tem algum dado no array se não tiver vai dar erro, se tiver vai aparecer o nom e a imagem
                     resultado.innerHTML = `
                         <h3>${personagem.name}</h3>
                         <img src="${personagem.image}" alt="${personagem.name}">
-                        <p>Status: ${personagem.status}</p>
-                        <p>Espécie: ${personagem.species}</p>
                     `;
             })}
 </script>
