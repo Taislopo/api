@@ -28,7 +28,7 @@
         fetch("https://rickandmortyapi.com/api/character/?name=" + nome)
             .then(function(resposta) {
                 return resposta.json();
-            //esta esperando a resposta do json o banco de dados
+            //esta esperando a resposta do json que é tipo um banco de dados
             })
             
             //na hora da busca vai ser pego esses dados o nome e a img
@@ -42,6 +42,8 @@
                         <img src="${personagem.image}" alt="${personagem.name}">
                     `;
             })}
+
+            
 </script>
 
 
